@@ -18,7 +18,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function() {
         ->name('admin.profile.update');
     Route::post('/profile/image/update', [ProfileController::class, 'updateImage'])
     ->name('admin.profile.image.update');
-
+    Route::post('/password/update', [ProfileController::class, 'changePassword'])
+        ->name('admin.password.update');
 
 });
 

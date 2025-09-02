@@ -55,11 +55,10 @@
                                 class="d-flex flex-column align-items-center text-center position-relative">
                                 <div class="position-relative">
                                     @if($user && $user->image)
-                                        <img id="profileImage"
-                                            src="{{ asset($user->image) }}" alt="Admin"
-                                            class="rounded-circle p-1 bg-primary" width="110">
+                                    <img id="profileImage" src="{{ asset($user->image) }}" alt="Admin"
+                                        class="rounded-circle p-1 bg-primary" width="110">
                                     @else
-                                        <img id="profileImage"
+                                    <img id="profileImage"
                                         src="{{ asset('backend/assets/images/avatars/avatar-2.png') }}" alt="Admin"
                                         class="rounded-circle p-1 bg-primary" width="110">
 
@@ -68,7 +67,8 @@
                                     <!-- Camera icon overlay -->
                                     <label for="profileImageInput" class="position-absolute"
                                         style="bottom:0; right:0; cursor:pointer;">
-                                        <i class="bx bx-camera fs-4 text-white bg-primary" style="width: 40px; height: 40px; line-height: 41px; border-radius: 50%;"></i>
+                                        <i class="bx bx-camera fs-4 text-white bg-primary"
+                                            style="width: 40px; height: 40px; line-height: 41px; border-radius: 50%;"></i>
                                     </label>
                                 </div>
 
@@ -234,36 +234,65 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="d-flex align-items-center mb-3">Project Status</h5>
-                                    <p>Web Design</p>
-                                    <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p>Website Markup</p>
-                                    <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 72%"
-                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p>One Page</p>
-                                    <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 89%"
-                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p>Mobile Template</p>
-                                    <div class="progress mb-3" style="height: 5px">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 55%"
-                                            aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p>Backend API</p>
-                                    <div class="progress" style="height: 5px">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 66%"
-                                            aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                    <h5 class="d-flex align-items-center mb-3">Change Password</h5>
+
+                                    <form id="changePasswordForm">
+                                        @csrf
+
+                                        <div class="form-group mb-3">
+                                            <label for="current_password">Current Password</label>
+                                            <input type="password" class="form-control" id="current_password"
+                                                name="current_password" required>
+                                            <span class="text-danger error-text current_password_error"></span>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="new_password">New Password</label>
+                                            <input type="password" class="form-control" id="new_password"
+                                                name="new_password" required>
+                                            <span class="text-danger error-text new_password_error"></span>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="new_password_confirmation">Confirm New Password</label>
+                                            <input type="password" class="form-control" id="new_password_confirmation"
+                                                name="new_password_confirmation" required>
+                                            <span class="text-danger error-text new_password_confirmation_error"></span>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                                            Change Password
+                                        </button>
+                                    </form>
+
+
+                                    <div id="password_success" class="text-success mt-2"></div>
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Success Modal -->
+                    <div class="modal fade" id="successModal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Success</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p id="successMessage"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -309,7 +338,7 @@
 </script>
 
 <script>
-$(document).ready(function(){
+    $(document).ready(function(){
 
     $('#profileImageInput').on('change', function(){
         let file = this.files[0];
@@ -338,6 +367,49 @@ $(document).ready(function(){
 
 });
 </script>
+
+<script>
+    $(function() {
+    $('#changePasswordForm').on('submit', function(e) {
+        e.preventDefault();
+
+        let formData = $(this).serialize();
+        let submitBtn = $('#submitBtn');
+
+        // clear old errors
+        $('.error-text').text('');
+        submitBtn.prop('disabled', true).html(
+            '<span class="spinner-border spinner-border-sm"></span> Changing...'
+        );
+
+        $.ajax({
+            url: "{{ route('admin.password.update') }}",
+            type: "POST",
+            data: formData,
+            success: function(response) {
+                if (response.success) {
+                    toastr.success(response.message);
+                    $('#changePasswordForm')[0].reset();
+                }
+            },
+            error: function(xhr) {
+                if (xhr.status === 422) {
+                    $.each(xhr.responseJSON.errors, function(key, value) {
+                        $('.' + key + '_error').text(value[0]);
+                    });
+                    toastr.error("Please fix the errors and try again.");
+                } else {
+                    toastr.error("An unexpected error occurred. Please try again.");
+                }
+            },
+            complete: function() {
+                submitBtn.prop('disabled', false).html('Change Password');
+            }
+        });
+    });
+});
+</script>
+
 
 
 
