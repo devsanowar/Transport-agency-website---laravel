@@ -227,8 +227,7 @@
         let form = this;
         let formData = new FormData(form);
 
-        // Disable the submit button to prevent multiple clicks
-        let $submitBtn = $('#submitBtn'); // Add id="submitBtn" to your submit button
+        let $submitBtn = $('#submitBtn');
         $submitBtn.prop('disabled', true);
         $('#btnText').text('Processing...');
         $('#btnSpinner').removeClass('d-none');

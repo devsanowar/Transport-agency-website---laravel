@@ -33,6 +33,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('social-icon')->name('admin.social.icon.')->group(function(){
         Route::get('/', [SocialIconController::class, 'index'])->name('index');
+        Route::put('/update', [SocialIconController::class, 'update'])->name('update');
     });
 
 
