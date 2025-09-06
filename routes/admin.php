@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
@@ -29,11 +30,17 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('website-settings')->name('admin.website.setting.')->group(function(){
         Route::get('/', [WebsiteSettingController::class, 'index'])->name('index');
         Route::put('/update', [WebsiteSettingController::class, 'update'])->name('update');
+        Route::put('/color-update', [WebsiteSettingController::class, 'websiteColorupdate'])->name('color.update');
     });
 
     Route::prefix('social-icon')->name('admin.social.icon.')->group(function(){
         Route::get('/', [SocialIconController::class, 'index'])->name('index');
         Route::put('/update', [SocialIconController::class, 'update'])->name('update');
+    });
+
+    Route::prefix('theme-customize')->name('admin.theme.customize.')->group(function(){
+        Route::get('/', [ThemeCustomerController::class, 'index'])->name('index');
+        Route::put('/update', [ThemeCustomerController::class, 'update'])->name('update');
     });
 
 

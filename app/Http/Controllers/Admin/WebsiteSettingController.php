@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\WebsiteSetting;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WebsiteColorUpdateRequest;
 use App\Http\Requests\WebsiteSettingUpdateRequest;
+use App\Models\WebsiteColor;
 
 class WebsiteSettingController extends Controller
 {
@@ -110,6 +112,49 @@ class WebsiteSettingController extends Controller
             'status' => 'success',
             'message' => 'Data successfully updated!',
             'data' => $responseData,
+        ]);
+    }
+
+
+    public function websiteColorUpdate(WebsiteColorUpdateRequest $request)
+    {
+
+        // Assuming there's only one row in website_colors
+        $colors = WebsiteColor::first();
+
+        if (!$colors) {
+            // If row does not exist, create it
+            $colors = new WebsiteColor();
+        }
+
+        // Update all fields
+        $colors->font_primary       = $request->font_primary;
+        $colors->font_secondary     = $request->font_secondary;
+
+        $colors->gray               = $request->gray;
+        $colors->gray_rgb           = $request->gray_rgb;
+
+        $colors->base               = $request->base;
+        $colors->base_rgb           = $request->base_rgb;
+
+        $colors->primary            = $request->primary;
+        $colors->primary_rgb        = $request->primary_rgb;
+
+        $colors->black              = $request->black;
+        $colors->black_rgb          = $request->black_rgb;
+
+        $colors->white              = $request->white;
+        $colors->white_rgb          = $request->white_rgb;
+
+        $colors->border_color       = $request->border_color;
+        $colors->border_color_rgb   = $request->border_color_rgb;
+
+        $colors->save();
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Website colors updated successfully!',
+            'data'    => $colors
         ]);
     }
 }

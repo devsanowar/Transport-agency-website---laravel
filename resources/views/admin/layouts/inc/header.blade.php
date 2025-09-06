@@ -1,5 +1,5 @@
 <header>
-    <div class="topbar d-flex align-items-center">
+    <div class="topbar d-flex align-items-center" style="background-color:{{  $theme->header_color ?? '' }}">
         <nav class="navbar navbar-expand gap-3">
             <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
             </div>

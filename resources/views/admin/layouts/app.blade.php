@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="semi-dark">
+<html lang="en" class="{{ $theme->theme_style ?? ''}}">
 
 <head>
 	<!-- Required meta tags -->

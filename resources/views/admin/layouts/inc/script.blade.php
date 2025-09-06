@@ -12,6 +12,7 @@
 	<script src="{{ asset('backend') }}/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="{{ asset('backend') }}/assets/plugins/jquery-knob/excanvas.js"></script>
 	<script src="{{ asset('backend') }}/assets/plugins/jquery-knob/jquery.knob.js"></script>
+
 	<script>
 		  $(function() {
 			  $(".knob").knob();
@@ -26,6 +27,7 @@
 
 
     <script src="{{ asset('backend') }}/assets/js/toastr.min.js"></script>
+    <script src="{{ asset('backend') }}/assets/js/colpick.js"></script>
 
 
     <script>
@@ -44,6 +46,9 @@
         @if (session('info'))
             toastr.info("{{ session('info') }}");
         @endif
+    </script>
+    <script>
+        	$('#picker').colpick();
     </script>
 
 

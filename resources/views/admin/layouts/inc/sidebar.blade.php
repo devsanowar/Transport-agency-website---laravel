@@ -325,17 +325,19 @@
                 </li>
                 <li> <a href="{{ route('admin.social.icon.index') }}"><i class='bx bx-radio-circle'></i>Social Icon Settings</a>
                 </li>
+                <li> <a href="{{ route('admin.theme.customize.index') }}"><i class='bx bx-radio-circle'></i>Theme Customize</a>
+                </li>
             </ul>
         </li>
         <li>
-            <a href="https://codervent.com/rocker/documentation/index.html" target="_blank">
+            <a href="" target="_blank">
                 <div class="parent-icon"><i class="bx bx-folder"></i>
                 </div>
                 <div class="menu-title">Documentation</div>
             </a>
         </li>
         <li>
-            <a href="https://themeforest.net/user/codervent" target="_blank">
+            <a href="" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>
                 </div>
                 <div class="menu-title">Support</div>
