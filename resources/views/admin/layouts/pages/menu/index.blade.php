@@ -87,13 +87,16 @@
                                         </a>
 
 
-<form action="{{ route('admin.website.menu.destroy', $menuItem->id) }}" method="POST" class="deleteMenuForm" style="display:inline-block;">
-            @csrf
-            @method('DELETE')
-            <button type="button" class="action-icon border border-danger text-danger deleteBtn" data-id="{{ $menuItem->id }}">
-                <i class="bx bx-trash"></i>
-            </button>
-        </form>
+                                        <form action="{{ route('admin.website.menu.destroy', $menuItem->id) }}"
+                                            method="POST" class="deleteMenuForm" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button"
+                                                class="action-icon border border-danger text-danger deleteBtn"
+                                                data-id="{{ $menuItem->id }}">
+                                                <i class="bx bx-trash"></i>
+                                            </button>
+                                        </form>
 
 
                                     </td>
@@ -168,7 +171,7 @@
 
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $(document).on('click', '.deleteBtn', function() {
         let button = $(this);
         let form = button.closest('form');

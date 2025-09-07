@@ -129,6 +129,7 @@
 @push('scripts')
 
 <script>
+    
     $(document).ready(function () {
         $('#socialIconUpdateForm').submit(function (e) {
             e.preventDefault();
@@ -145,6 +146,7 @@
                 type: "POST",
                 data: formData,
                 success: function (response) {
+                    $('#socialIconUpdateForm')[0].reset();
                     if (response.status === 'success') {
                         toastr.success(response.message);
                     } else {
