@@ -40,27 +40,19 @@
 
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx  bx-cog'></i>
-                </div>
+                <div class="parent-icon"><i class='bx bx-cog'></i></div>
                 <div class="menu-title">Theme Settings</div>
             </a>
-            <ul>
-                <li> <a href="{{ route('admin.website.menu.index') }}"><i class='bx bx-radio-circle'></i>Website
-                        Menu</a>
-                <li> <a href="{{ route('admin.website.setting.index') }}"><i class='bx bx-radio-circle'></i>Website
-                        settings</a>
+            <ul class="mm-collapse">
+                <li><a href="{{ route('admin.website.menu.index') }}"><i class='bx bx-radio-circle'></i>Website Menu</a>
                 </li>
-                <li> <a href="{{ route('admin.social.icon.index') }}"><i class='bx bx-radio-circle'></i>Social Icon
-                        Settings</a>
-                </li>
-                <li> <a href="{{ route('admin.theme.customize.index') }}"><i class='bx bx-radio-circle'></i>Theme
-                        Customize</a>
-                </li>
+                <li><a href="{{ route('admin.website.setting.index') }}"><i class='bx bx-radio-circle'></i>Website
+                        Settings</a></li>
+                <li><a href="{{ route('admin.social.icon.index') }}"><i class='bx bx-radio-circle'></i>Social Icon
+                        Settings</a></li>
+                <li><a href="{{ route('admin.theme.customize.index') }}"><i class='bx bx-radio-circle'></i>Theme
+                        Customize</a></li>
             </ul>
-        </li>
-
-        <li>
-            <hr>
         </li>
 
         <li>

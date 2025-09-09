@@ -32,16 +32,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-contact" role="tab"
-                                aria-selected="false">
-                                <div class="d-flex align-items-center">
-                                    <div class="tab-icon"><i class='bx bx-microphone font-18 me-1'></i>
-                                    </div>
-                                    <div class="tab-title">Contact</div>
-                                </div>
-                            </a>
-                        </li>
+                        
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="primary-pills-website-settings" role="tabpanel">
@@ -391,18 +382,8 @@
                                 </div>
                             </form>
 
-
-
                         </div>
-                        <div class="tab-pane fade" id="primary-pills-contact" role="tabpanel">
-                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's
-                                organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify
-                                pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy
-                                hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred
-                                pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie
-                                etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl
-                                craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
