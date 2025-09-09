@@ -29,6 +29,11 @@
             <ul class="mm-collapse">
                 <li> <a href="{{ route('admin.post.category.index') }}"><i class="bx bx-radio-circle"></i>Categories</a>
                 </li>
+                <li> <a href="{{ route('admin.post.create') }}"><i class="bx bx-radio-circle"></i>Add Post</a>
+                </li>
+
+                <li> <a href="{{ route('admin.post.index') }}"><i class="bx bx-radio-circle"></i>All Post</a>
+                </li>
             </ul>
         </li>
 

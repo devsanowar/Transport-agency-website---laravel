@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Post Categories')
+@section('title', 'All Post')
 @push('styles')
 <link href="{{ asset('backend') }}/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endpush
@@ -10,8 +10,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="">Add Post Category</h5>
-                        <a href="{{ route('admin.post.category.create') }}" class="btn btn-outline-primary px-5 rounded-0">Add Category</a>
+                        <h5 class="">Add Post</h5>
+                        <a href="{{ route('admin.post.create') }}" class="btn btn-outline-primary px-5 rounded-0">Add Post</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -20,20 +20,22 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+                                    <th>thumbnail</th>
+                                    <th>Title</th>
                                     <th>Category Name</th>
-                                    <th>Parent</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $key=> $category)
+                                @foreach ($posts as $key=> $post)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $category->post_category_name }}</td>
-                                    <td>{{ $category->parent ? $category->parent->post_category_name : '-' }}</td>
+                                    <td><img src="{{ asset($post->thumbnail) }}" alt="post thumbnail" width="50"></td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>{{ $post->category->post_category_name ?? '-' }}</td>
                                     <td class="text-center">
-                                        @if($category->status)
+                                        @if($post->status)
                                         <span class="badge bg-success">Active</span>
                                         @else
                                         <span class="badge bg-danger">Inactive</span>
@@ -41,19 +43,19 @@
                                     </td>
                                     <td class="text-center">
                                         <!-- Edit Button -->
-                                        <a href="{{ route('admin.post.category.edit',$category->id) }}"
+                                        <a href="{{ route('admin.post.edit',$post->id) }}"
                                             class="action-icon border border-primary text-primary me-2 editMenuBtn">
                                             <i class="bx bx-edit"></i>
                                         </a>
 
 
-                                        <form action="{{ route('admin.post.category.destroy',$category->id) }}"
+                                        <form action="{{ route('admin.post.destroy',$post->id) }}"
                                             method="POST" class="deleteMenuForm" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"
                                                 class="action-icon border border-danger text-danger deleteBtn"
-                                                data-id="{{ $category->id }}">
+                                                data-id="{{ $post->id }}">
                                                 <i class="bx bx-trash"></i>
                                             </button>
                                         </form>

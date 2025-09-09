@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\ThemeCustomerController;
@@ -56,7 +57,18 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     });
 
 
+    // Post Category route here
     Route::prefix('post/category')->controller(PostCategoryController::class)->name('admin.post.category.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::delete('/delete/{id}', 'destroy')->name('destroy');
+    });
+
+    // Post Route here
+    Route::prefix('post')->controller(PostController::class)->name('admin.post.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
