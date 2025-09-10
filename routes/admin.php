@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BreadcrumbController;
 use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\SliderControlle;
 use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 
@@ -41,6 +43,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [SocialIconController::class, 'index'])->name('index');
         Route::put('/update', [SocialIconController::class, 'update'])->name('update');
     });
+
+    // Breadcrumb route here
+    Route::put('/breadcrumb', [BreadcrumbController::class, 'update'])->name('breadcrumb.update');
+
 
     // Theme customize route here
     Route::prefix('theme-customize')->name('admin.theme.customize.')->group(function () {
@@ -75,5 +81,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::put('/update/{id}', 'update')->name('update');
         Route::delete('/delete/{id}', 'destroy')->name('destroy');
+    });
+
+    //home page slider route here
+    Route::prefix('home')->group(function(){
+        Route::resource('slider', SliderControlle::class);
     });
 });

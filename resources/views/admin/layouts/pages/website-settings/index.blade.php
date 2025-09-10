@@ -3,6 +3,24 @@
 @push('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
 
+<style>
+    .image-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .delete-icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        border-radius: 50%;
+        padding: 3px 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+</style>
 @endpush
 @section('admin_content')
 <div class="page-content">
@@ -23,7 +41,7 @@
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" data-bs-toggle="pill" href="#primary-pills-profile" role="tab"
+                            <a class="nav-link" data-bs-toggle="pill" href="#website-color-settings" role="tab"
                                 aria-selected="false">
                                 <div class="d-flex align-items-center">
                                     <div class="tab-icon"><i class='bx  bx-color-fill font-18 me-1'></i>
@@ -32,7 +50,18 @@
                                 </div>
                             </a>
                         </li>
-                        
+
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="pill" href="#header-breadcrumb" role="tab"
+                                aria-selected="false">
+                                <div class="d-flex align-items-center">
+                                    <div class="tab-icon"><i class='bx  bx-captions font-18 me-1'></i>
+                                    </div>
+                                    <div class="tab-title">Website Breadcrumb</div>
+                                </div>
+                            </a>
+                        </li>
+
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="primary-pills-website-settings" role="tabpanel">
@@ -227,7 +256,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
+                        <div class="tab-pane fade" id="website-color-settings" role="tabpanel">
                             <form id="websiteColorsForm">
                                 @csrf
                                 @method('PUT')
@@ -375,10 +404,83 @@
 
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-primary" id="submitBtn">
-                                            <span id="colorBtnText">Submit</span>
-                                            <span id="colorBtnSpinner" class="spinner-border spinner-border-sm d-none"
-                                                role="status" aria-hidden="true"></span>
-                                        </button>
+                                        <span id="colorBtnText">Submit</span>
+                                        <span id="colorBtnSpinner" class="spinner-border spinner-border-sm d-none"
+                                            role="status" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="header-breadcrumb" role="tabpanel">
+
+                            <form id="updateBreadcrumbForm" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+
+                                {{-- Background Image --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Background Image</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="breadcrumb_bg_image" type="file">
+                                        <div class="image-wrapper mt-2" id="bgWrapper"
+                                            style="{{ $breadcrumb->breadcrumb_bg_image ? '' : 'display:none;' }}">
+                                            <span class="delete-icon" data-target="bgPreview">✖</span>
+                                            <img id="bgPreview"
+                                                src="{{ $breadcrumb->breadcrumb_bg_image ? asset($breadcrumb->breadcrumb_bg_image) : '' }}"
+                                                width="200">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Header Image --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Header Image</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="page_header_image" type="file">
+                                        <div class="image-wrapper mt-2" id="headerWrapper"
+                                            style="{{ $breadcrumb->page_header_image ? '' : 'display:none;' }}">
+                                            <span class="delete-icon" data-target="headerPreview">✖</span>
+                                            <img id="headerPreview"
+                                                src="{{ $breadcrumb->page_header_image ? asset($breadcrumb->page_header_image) : '' }}"
+                                                width="200">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Container Image --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Container Image</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" name="container_box_image" type="file">
+                                        <div class="image-wrapper mt-2" id="containerWrapper"
+                                            style="{{ $breadcrumb->container_box_image ? '' : 'display:none;' }}">
+                                            <span class="delete-icon" data-target="containerPreview">✖</span>
+                                            <img id="containerPreview"
+                                                src="{{ $breadcrumb->container_box_image ? asset($breadcrumb->container_box_image) : '' }}"
+                                                width="200">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Status --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Status</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" name="status">
+                                            <option value="1" {{ $breadcrumb->status == 1 ? 'selected' : '' }}>Active
+                                            </option>
+                                            <option value="2" {{ $breadcrumb->status == 2 ? 'selected' : '' }}>DeActive
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-9 offset-sm-3">
+                                        <button type="submit" class="btn btn-primary px-4">Update</button>
+                                    </div>
                                 </div>
                             </form>
 
@@ -592,6 +694,84 @@ $(document).ready(function(){
         });
     });
 });
+</script>
+
+<script>
+    $(document).on("submit", "#updateBreadcrumbForm", function (e) {
+    e.preventDefault();
+
+    let formData = new FormData(this);
+
+    // Extra hidden field (delete flags)
+    $(".delete-flag").each(function() {
+        formData.append($(this).attr("name"), $(this).val());
+    });
+
+    $.ajax({
+        url: "{{ route('breadcrumb.update') }}",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (res) {
+            if (res.success) {
+                toastr.success(res.message);
+
+                // Background
+                if (res.data.breadcrumb_bg_image) {
+                    $("#bgWrapper").show();
+                    $("#bgPreview").attr("src", "/" + res.data.breadcrumb_bg_image);
+                } else {
+                    $("#bgWrapper").hide();
+                }
+
+                // Header
+                if (res.data.page_header_image) {
+                    $("#headerWrapper").show();
+                    $("#headerPreview").attr("src", "/" + res.data.page_header_image);
+                } else {
+                    $("#headerWrapper").hide();
+                }
+
+                // Container
+                if (res.data.container_box_image) {
+                    $("#containerWrapper").show();
+                    $("#containerPreview").attr("src", "/" + res.data.container_box_image);
+                } else {
+                    $("#containerWrapper").hide();
+                }
+            }
+
+            if (res.data.breadcrumb_bg_image) {
+                $("#bgWrapper").show();
+                $("#bgPreview").attr("src", "/" + res.data.breadcrumb_bg_image);
+            } else {
+                $("#bgWrapper").hide();
+            }
+
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert("⚠️ Error occurred!");
+        }
+    });
+});
+
+// Delete button click
+$(document).on("click", ".delete-icon", function () {
+    let target = $(this).data("target");
+    $("#" + target).attr("src", "").parent().hide();
+
+    // delete flag input যোগ করি যাতে backend এ বুঝতে পারে কোন image delete হবে
+    if ($("#" + target + "_delete").length === 0) {
+        $("#updateBreadcrumbForm").append(
+            `<input type="hidden" class="delete-flag" id="${target}_delete" name="${target}_delete" value="1">`
+        );
+    } else {
+        $("#" + target + "_delete").val("1");
+    }
+});
+
 </script>
 
 @endpush

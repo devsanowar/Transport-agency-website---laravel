@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Breadcrumb;
 use Illuminate\Http\Request;
 use App\Models\WebsiteSetting;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WebsiteColorUpdateRequest;
 use App\Http\Requests\WebsiteSettingUpdateRequest;
+
 use App\Models\WebsiteColor;
 
 class WebsiteSettingController extends Controller
@@ -14,7 +16,8 @@ class WebsiteSettingController extends Controller
     public function index()
     {
         $websiteSetting = WebsiteSetting::first() ?? new WebsiteSetting;
-        return view('admin.layouts.pages.website-settings.index', compact('websiteSetting'));
+        $breadcrumb = Breadcrumb::first() ?? new Breadcrumb;
+        return view('admin.layouts.pages.website-settings.index', compact('websiteSetting', 'breadcrumb'));
     }
 
 
