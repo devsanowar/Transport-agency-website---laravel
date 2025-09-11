@@ -32,6 +32,8 @@
                 </li>
                 <li> <a href="{{ route('home-about.index') }}"><i class="bx bx-radio-circle"></i>About</a>
                 </li>
+                <li> <a href="{{ route('services.index') }}"><i class="bx bx-radio-circle"></i>Services</a>
+                </li>
             </ul>
         </li>
 

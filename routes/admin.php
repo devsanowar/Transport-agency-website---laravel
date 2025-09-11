@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SliderControlle;
 use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
@@ -100,6 +101,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::prefix('home')->group(function(){
         Route::get('home-about', [HomeAboutController::class, 'index'])->name('home-about.index');
         Route::put('/home-about/update', [HomeAboutController::class, 'update'])->name('home-about.update');
+    });
+
+    Route::prefix('home')->group(function(){
+        Route::resource('services', ServicesController::class);
     });
 
 
