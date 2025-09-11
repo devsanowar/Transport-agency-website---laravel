@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Create Slider')
+@section('title', 'Create Feature')
 @section('admin_content')
 <div class="page-content">
     <div class="row">
@@ -7,73 +7,46 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="">Create Slider</h5>
-                        <a href="{{ route('slider.index') }}" class="btn btn-outline-primary px-5 rounded-0">All
-                            Slider</a>
+                        <h5 class="">Create Feature</h5>
+                        <a href="{{ route('feature.index') }}" class="btn btn-outline-primary px-5 rounded-0">All
+                            Feature</a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form id="addSliderForm">
+                    <form id="addFeatureForm">
                         @csrf
 
                         {{-- Post Title --}}
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Title</label>
+                            <label class="col-sm-3 col-form-label">Feature Title</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_title"
-                                    placeholder="Enter Slider Title">
-                            </div>
-                        </div>
-
-                        {{-- slider Title --}}
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Sub Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_subtitle"
-                                    placeholder="Enter Slider Sub Title">
+                                <input type="text" class="form-control" name="feature_title"
+                                    placeholder="Enter Feature Title">
                             </div>
                         </div>
 
 
                         {{-- Content --}}
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Contents</label>
+                            <label class="col-sm-3 col-form-label">Feature Contents</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="slider_contents"
-                                    placeholder="Enter slider contents">{{ old('slider_contents', $post->slider_contents ?? '') }}</textarea>
+                                <textarea class="form-control" name="feature_content"
+                                    placeholder="Enter feature contents">{{ old('feature_content', $post->feature_content ?? '') }}</textarea>
                             </div>
                         </div>
 
                         {{-- Thumbnail --}}
                         <div class="row mb-3" style="margin-top:60px">
-                            <label class="col-sm-3 col-form-label">Slider Image (Max-size: 1024kb)</label>
+                            <label class="col-sm-3 col-form-label">Feature Image (Max-size: 200kb)</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" name="slider_image">
+                                <input type="file" class="form-control" name="feature_image">
 
-                                @if(!empty($post->slider_image))
-                                <img src="{{ asset('uploads/slider_images/'.$post->slider_image) }}" alt="Slider Image"
+                                @if(!empty($post->feature_image))
+                                <img src="{{ asset('uploads/feature_images/'.$post->feature_image) }}" alt="Feature Image"
                                     class="mt-2 border rounded" width="120">
                                 @endif
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Button Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_button_name"
-                                    placeholder="Enter Slider button name">
-                            </div>
-                        </div>
-
-
-                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Button Link</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_button_link"
-                                    placeholder="Enter link">
-                            </div>
-                        </div>
-
 
 
                         {{-- Status --}}
@@ -140,7 +113,7 @@
 @push('scripts')
 <script>
     $(document).ready(function(){
-    $("#addSliderForm").submit(function(e){
+    $("#addFeatureForm").submit(function(e){
         e.preventDefault();
         let formData = new FormData(this);
 
@@ -150,13 +123,13 @@
         $('#submitBtn').prop('disabled', true);
 
         $.ajax({
-            url: "{{ route('slider.store') }}",
+            url: "{{ route('feature.store') }}",
             type: "POST",
             data: formData,
             contentType: false,
             processData: false,
             success: function(response){
-                $("#addSliderForm")[0].reset();
+                $("#addFeatureForm")[0].reset();
                 if(response.status === 'success'){
                     toastr.success(response.message);
                 } else {

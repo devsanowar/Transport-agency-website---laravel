@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BreadcrumbController;
+use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\SliderControlle;
@@ -83,8 +85,22 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::delete('/delete/{id}', 'destroy')->name('destroy');
     });
 
-    //home page slider route here
+
+    //home page route here ======================================
+
     Route::prefix('home')->group(function(){
         Route::resource('slider', SliderControlle::class);
     });
+
+
+    Route::prefix('home')->group(function(){
+        Route::resource('feature', FeatureController::class);
+    });
+
+    Route::prefix('home')->group(function(){
+        Route::get('home-about', [HomeAboutController::class, 'index'])->name('home-about.index');
+        Route::put('/home-about/update', [HomeAboutController::class, 'update'])->name('home-about.update');
+    });
+
+
 });

@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Edit Slider')
+@section('title', 'Edit Feature')
 @section('admin_content')
 <div class="page-content">
     <div class="row">
@@ -7,81 +7,65 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="">Edit Slider</h5>
-                        <a href="{{ route('slider.index') }}" class="btn btn-outline-primary px-5 rounded-0">All
-                            Slider</a>
+                        <h5 class="">Edit Feature</h5>
+                        <a href="{{ route('feature.index') }}" class="btn btn-outline-primary px-5 rounded-0">All
+                            Feature</a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form id="editSliderForm">
+                    <form id="editFeatureForm">
                         @csrf
                         @method('PUT')
 
-                        {{-- Slider Title --}}
+                        {{-- feature Title --}}
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Title</label>
+                            <label class="col-sm-3 col-form-label">Feature Title</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_title"
-                                    value="{{ $slider->slider_title }}" placeholder="Enter Slider Title">
+                                <input type="text" class="form-control" name="feature_title"
+                                    value="{{ $feature->feature_title }}" placeholder="Enter Feature Title">
                             </div>
                         </div>
 
-                        {{-- Slider Sub Title --}}
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Sub Title</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_subtitle"
-                                    value="{{ $slider->slider_subtitle }}" placeholder="Enter Slider Sub Title">
-                            </div>
-                        </div>
 
                         {{-- Content --}}
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Contents</label>
+                            <label class="col-sm-3 col-form-label">Feature Contents</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="slider_contents"
-                                    placeholder="Enter slider contents">{{ old('slider_contents', $slider->slider_contents) }}</textarea>
+                                <textarea class="form-control" name="feature_content"
+                                    placeholder="Enter feature contents">{{ old('feature_content', $feature->feature_content) }}</textarea>
                             </div>
                         </div>
 
                         {{-- Thumbnail --}}
                         <div class="row mb-3" style="margin-top:60px">
-                            <label class="col-sm-3 col-form-label">Slider Image (Max-size: 1024kb)</label>
+                            <label class="col-sm-3 col-form-label">Feature Image (Max-size: 200kb)</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" name="slider_image">
+                                <input type="file" class="form-control" name="feature_image">
 
-                                @if(!empty($slider->slider_image))
-                                <img id="previewImage" src="{{ asset($slider->slider_image) }}" alt="Slider Image"
+                                @if(!empty($feature->feature_image))
+                                <img id="previewImage" src="{{ asset($feature->feature_image) }}" alt="Feature Image"
                                     class="mt-2 border rounded" width="120">
                                 @endif
                             </div>
                         </div>
 
-                        {{-- Slider Button Name --}}
+                        {{-- Feature order by --}}
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Button Name</label>
+                            <label class="col-sm-3 col-form-label">Order By</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_button_name"
-                                    value="{{ $slider->slider_button_name }}" placeholder="Enter Slider button name">
+                                <input type="text" class="form-control" name="order_by"
+                                    value="{{ $feature->order_by }}" placeholder="Edit Order By ">
                             </div>
                         </div>
 
-                        {{-- Slider Button Link --}}
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Slider Button Link</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" name="slider_button_link"
-                                    value="{{ $slider->slider_button_link }}" placeholder="Enter link">
-                            </div>
-                        </div>
 
                         {{-- Status --}}
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Status</label>
                             <div class="col-sm-9">
                                 <select class="form-select" name="status">
-                                    <option value="1" {{ $slider->status == 1 ? 'selected' : '' }}>Active</option>
-                                    <option value="0" {{ $slider->status == 0 ? 'selected' : '' }}>DeActive</option>
+                                    <option value="1" {{ $feature->status == 1 ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ $feature->status == 0 ? 'selected' : '' }}>DeActive</option>
                                 </select>
                             </div>
                         </div>
@@ -94,7 +78,7 @@
                             <label class="col-sm-3 col-form-label">Meta Title</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="meta_title"
-                                    value="{{ $slider->meta_title }}" placeholder="SEO title">
+                                    value="{{ $feature->meta_title }}" placeholder="SEO title">
                             </div>
                         </div>
 
@@ -103,7 +87,7 @@
                             <label class="col-sm-3 col-form-label">Meta Keywords</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="meta_keywords"
-                                    value="{{ $slider->meta_keywords }}" placeholder="keyword1, keyword2">
+                                    value="{{ $feature->meta_keywords }}" placeholder="keyword1, keyword2">
                             </div>
                         </div>
 
@@ -112,7 +96,7 @@
                             <label class="col-sm-3 col-form-label">Meta Description</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" name="meta_description" rows="3"
-                                    placeholder="SEO description">{{ $slider->meta_description }}</textarea>
+                                    placeholder="SEO description">{{ $feature->meta_description }}</textarea>
                             </div>
                         </div>
 
@@ -141,7 +125,7 @@
 @push('scripts')
 <script>
     $(document).ready(function(){
-        $("#editSliderForm").submit(function(e){
+        $("#editFeatureForm").submit(function(e){
             e.preventDefault();
             let formData = new FormData(this);
 
@@ -151,7 +135,7 @@
             $('#submitBtn').prop('disabled', true);
 
             $.ajax({
-                url: "{{ route('slider.update', $slider->id) }}",
+                url: "{{ route('feature.update', $feature->id) }}",
                 type: "POST",
                 data: formData,
                 contentType: false,

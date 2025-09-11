@@ -28,6 +28,10 @@
             <ul class="mm-collapse">
                 <li> <a href="{{ route('slider.index') }}"><i class="bx bx-radio-circle"></i>Sliders</a>
                 </li>
+                <li> <a href="{{ route('feature.index') }}"><i class="bx bx-radio-circle"></i>Feature</a>
+                </li>
+                <li> <a href="{{ route('home-about.index') }}"><i class="bx bx-radio-circle"></i>About</a>
+                </li>
             </ul>
         </li>
 

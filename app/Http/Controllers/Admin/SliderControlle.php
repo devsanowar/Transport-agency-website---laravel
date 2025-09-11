@@ -39,7 +39,7 @@ class SliderControlle extends Controller
             'slider_contents'    => 'nullable|string',
             'slider_button_name' => 'nullable|string',
             'slider_button_link' => 'nullable|string',
-            'slider_image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:1048',
+            'slider_image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:1024',
             // 'slider_image_two'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status'             => 'nullable|in:1,0',
         ]);
@@ -128,12 +128,10 @@ class SliderControlle extends Controller
         $sliderImage = $slider->slider_image; // পুরনো image রাখছি default হিসেবে
 
         if ($request->hasFile('slider_image')) {
-            // পুরনো image ডিলিট করবো যদি থাকে
             if ($slider->slider_image && File::exists(public_path($slider->slider_image))) {
                 File::delete(public_path($slider->slider_image));
             }
 
-            // নতুন image upload
             $file     = $request->file('slider_image');
             $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('uploads/slider_images'), $fileName);
