@@ -13,13 +13,13 @@ use App\Http\Controllers\Admin\CTAController;
 use App\Http\Controllers\Admin\CustomerReviewController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\HomeAboutController;
+use App\Http\Controllers\Admin\HomeContactController;
 use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SliderControlle;
 use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
-
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -111,6 +111,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
         Route::resource('reviews', CustomerReviewController::class);
         Route::put('/review/update', [CustomerReviewController::class, 'updateSectionTitle'])->name('review.title.update');
+
+        Route::get('contact-section', [HomeContactController::class, 'index'])->name('home.contact.section.index');
+        Route::put('/contact-section/update', [HomeContactController::class, 'update'])->name('home.contact.section.update');
     });
 
 

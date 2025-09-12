@@ -41,6 +41,8 @@
 
                 <li> <a href="{{ route('reviews.index') }}"><i class="bx bx-radio-circle"></i>Client Review</a>
                 </li>
+                <li> <a href="{{ route('home.contact.section.index') }}"><i class="bx bx-radio-circle"></i>Contact Sec.</a>
+                </li>
             </ul>
         </li>
 
