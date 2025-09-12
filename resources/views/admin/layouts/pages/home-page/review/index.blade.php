@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
- <form id="addTitlesForm" enctype="multipart/form-data">
+                    <form id="addTitlesForm" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -14,8 +14,8 @@
                             {{-- Client Title --}}
                             <div class="col-md-3">
                                 <label class="form-label">Tag Line</label>
-                                <input type="text" name="review_tagline" class="form-control" placeholder="Happy Client" value="{{ $sectionTitle->review_tagline }}"
-                                    required>
+                                <input type="text" name="review_tagline" class="form-control" placeholder="Happy Client"
+                                    value="{{ $sectionTitle->review_tagline }}" required>
                             </div>
 
                             {{-- About Service Title --}}
@@ -28,7 +28,8 @@
                             {{-- Third Title --}}
                             <div class="col-md-4">
                                 <label class="form-label">Section Title Highlight</label>
-                                <input type="text" name="review_title_highlight" class="form-control" value="{{ $sectionTitle->review_title_highlight }}" placeholder="Other Title"
+                                <input type="text" name="review_title_highlight" class="form-control"
+                                    value="{{ $sectionTitle->review_title_highlight }}" placeholder="Other Title"
                                     required>
                             </div>
 
@@ -150,7 +151,7 @@
 </script>
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $("#addTitlesForm").submit(function(e){
         e.preventDefault();
         let formData = new FormData(this);

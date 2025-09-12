@@ -13,7 +13,8 @@
     <ul class="metismenu" id="menu">
         <li>
             <a href="{{ route('admin.dashboard') }}">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                <div class="parent-icon">
+                    <i class="bx bx-category"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
@@ -21,7 +22,7 @@
 
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
+                <div class="parent-icon"><i class='bx  bx-home-alt'  ></i>
                 </div>
                 <div class="menu-title">Home</div>
             </a>
@@ -32,8 +33,7 @@
                 </li>
                 <li> <a href="{{ route('home-about.index') }}"><i class="bx bx-radio-circle"></i>About</a>
                 </li>
-                <li> <a href="{{ route('services.index') }}"><i class="bx bx-radio-circle"></i>Services</a>
-                </li>
+
                 <li> <a href="{{ route('achievement.index') }}"><i class="bx bx-radio-circle"></i>Achievements</a>
                 </li>
                 <li> <a href="{{ route('cta.index') }}"><i class="bx bx-radio-circle"></i>CTA</a>
@@ -46,10 +46,41 @@
             </ul>
         </li>
 
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="bx bx-user"></i>
+                </div>
+                <div class="menu-title">Team</div>
+            </a>
+            <ul class="mm-collapse">
+                <li> <a href="{{ route('team.create') }}"><i class="bx bx-radio-circle"></i>Add Team</a>
+                </li>
+                <li> <a href="{{ route('team.index') }}"><i class="bx bx-radio-circle"></i>All Team</a>
+                </li>
+
+            </ul>
+        </li>
 
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
+                <div class="parent-icon"><i class="bx bx-grid-alt"></i>
+                </div>
+                <div class="menu-title">Service</div>
+            </a>
+            <ul class="mm-collapse">
+                <li> <a href="{{ route('services.create') }}"><i class="bx bx-radio-circle"></i>Add Service</a>
+                </li>
+                <li> <a href="{{ route('services.index') }}"><i class="bx bx-radio-circle"></i>All Services</a>
+                </li>
+
+            </ul>
+        </li>
+
+
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
                 </div>
                 <div class="menu-title">Posts</div>
             </a>

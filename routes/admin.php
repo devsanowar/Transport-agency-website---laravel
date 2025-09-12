@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\SocialIconController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SliderControlle;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 
@@ -115,6 +116,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('contact-section', [HomeContactController::class, 'index'])->name('home.contact.section.index');
         Route::put('/contact-section/update', [HomeContactController::class, 'update'])->name('home.contact.section.update');
     });
+
+    // Team route here
+    Route::resource('team', TeamController::class);
 
 
 });
