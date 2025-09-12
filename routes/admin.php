@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AchievementController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -8,6 +9,8 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BreadcrumbController;
+use App\Http\Controllers\Admin\CTAController;
+use App\Http\Controllers\Admin\CustomerReviewController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\SocialIconController;
@@ -16,6 +19,7 @@ use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\SliderControlle;
 use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -90,21 +94,23 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     //home page route here ======================================
 
     Route::prefix('home')->group(function(){
+
         Route::resource('slider', SliderControlle::class);
-    });
 
-
-    Route::prefix('home')->group(function(){
         Route::resource('feature', FeatureController::class);
-    });
 
-    Route::prefix('home')->group(function(){
         Route::get('home-about', [HomeAboutController::class, 'index'])->name('home-about.index');
         Route::put('/home-about/update', [HomeAboutController::class, 'update'])->name('home-about.update');
-    });
 
-    Route::prefix('home')->group(function(){
         Route::resource('services', ServicesController::class);
+
+        Route::resource('achievement', AchievementController::class);
+
+        Route::get('/cta', [CTAController::class, 'index'])->name('cta.index');
+        Route::put('/cta/update', [CTAController::class, 'update'])->name('cta.update');
+
+        Route::resource('reviews', CustomerReviewController::class);
+        Route::put('/review/update', [CustomerReviewController::class, 'updateSectionTitle'])->name('review.title.update');
     });
 
 

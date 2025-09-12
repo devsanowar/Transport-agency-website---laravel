@@ -34,6 +34,13 @@
                 </li>
                 <li> <a href="{{ route('services.index') }}"><i class="bx bx-radio-circle"></i>Services</a>
                 </li>
+                <li> <a href="{{ route('achievement.index') }}"><i class="bx bx-radio-circle"></i>Achievements</a>
+                </li>
+                <li> <a href="{{ route('cta.index') }}"><i class="bx bx-radio-circle"></i>CTA</a>
+                </li>
+
+                <li> <a href="{{ route('reviews.index') }}"><i class="bx bx-radio-circle"></i>Client Review</a>
+                </li>
             </ul>
         </li>
 

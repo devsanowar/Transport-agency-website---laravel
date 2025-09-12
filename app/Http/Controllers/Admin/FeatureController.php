@@ -14,7 +14,7 @@ class FeatureController extends Controller
      */
     public function index()
     {
-        $features = Feature::latest()->get();
+        $features = Feature::all();
         return view('admin.layouts.pages.home-page.feature.index', compact('features'));
     }
 
@@ -38,7 +38,7 @@ class FeatureController extends Controller
             'status'             => 'nullable|in:1,0',
         ]);
 
-        $maxOrder = Feature::max('order_by');  // সর্বোচ্চ order_by বের করলাম
+        $maxOrder = Feature::max('order_by');
         $nextOrder = $maxOrder ? $maxOrder + 1 : 1;
 
         // default image
