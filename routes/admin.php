@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutPageAboutController;
 use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +118,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
         Route::get('contact-section', [HomeContactController::class, 'index'])->name('home.contact.section.index');
         Route::put('/contact-section/update', [HomeContactController::class, 'update'])->name('home.contact.section.update');
     });
+
+     Route::prefix('about-page')->group(function(){
+        Route::get('about', [AboutPageAboutController::class, 'index'])->name('about_page.about.index');
+        Route::put('/about/update', [AboutPageAboutController::class, 'update'])->name('about_page.about.update');
+     });
 
     // Team route here
     Route::resource('team', TeamController::class);

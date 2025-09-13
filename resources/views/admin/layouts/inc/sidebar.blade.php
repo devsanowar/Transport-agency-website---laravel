@@ -48,6 +48,18 @@
 
         <li>
             <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-list-ul'></i>
+                </div>
+                <div class="menu-title">About page</div>
+            </a>
+            <ul class="mm-collapse">
+                <li> <a href="{{ route('about_page.about.index') }}"><i class="bx bx-radio-circle"></i>About</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-network-chart'></i>
                 </div>
                 <div class="menu-title">Brand</div>
