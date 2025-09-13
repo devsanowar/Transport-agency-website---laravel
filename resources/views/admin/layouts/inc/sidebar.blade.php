@@ -48,6 +48,21 @@
 
         <li>
             <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-network-chart'></i>
+                </div>
+                <div class="menu-title">Brand</div>
+            </a>
+            <ul class="mm-collapse">
+                <li> <a href="{{ route('brands.create') }}"><i class="bx bx-radio-circle"></i>Add Brand</a>
+                </li>
+                <li> <a href="{{ route('brands.index') }}"><i class="bx bx-radio-circle"></i>All Brand</a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-user"></i>
                 </div>
                 <div class="menu-title">Team</div>
@@ -75,6 +90,7 @@
 
             </ul>
         </li>
+
 
 
 

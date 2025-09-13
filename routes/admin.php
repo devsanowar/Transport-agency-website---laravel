@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -119,6 +120,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     // Team route here
     Route::resource('team', TeamController::class);
+
+    //Brand route here
+    Route::resource('brands', BrandController::class);
 
 
 });
