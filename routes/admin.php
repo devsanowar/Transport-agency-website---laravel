@@ -1,28 +1,30 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutPageAboutController;
-use App\Http\Controllers\Admin\AchievementController;
-use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Http\Controllers\Admin\CTAController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PostController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\BreadcrumbController;
-use App\Http\Controllers\Admin\CTAController;
-use App\Http\Controllers\Admin\CustomerReviewController;
-use App\Http\Controllers\Admin\FeatureController;
-use App\Http\Controllers\Admin\HomeAboutController;
-use App\Http\Controllers\Admin\HomeContactController;
-use App\Http\Controllers\Admin\SocialIconController;
-use App\Http\Controllers\Admin\PostCategoryController;
-use App\Http\Controllers\Admin\ServicesController;
-use App\Http\Controllers\Admin\SliderControlle;
+
+
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\SliderControlle;
+use App\Http\Controllers\Admin\FeatureController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HomeAboutController;
+use App\Http\Controllers\Admin\BreadcrumbController;
+use App\Http\Controllers\Admin\SocialIconController;
+use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\Admin\HomeContactController;
+use App\Http\Controllers\Admin\WhyChooseUsController;
+use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\ThemeCustomerController;
+use App\Http\Controllers\Admin\AboutPageAboutController;
+use App\Http\Controllers\Admin\CustomerReviewController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\Admin\WhyChooseFeatureController;
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
@@ -122,6 +124,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
      Route::prefix('about-page')->group(function(){
         Route::get('about', [AboutPageAboutController::class, 'index'])->name('about_page.about.index');
         Route::put('/about/update', [AboutPageAboutController::class, 'update'])->name('about_page.about.update');
+
+        Route::get('why-choose-us', [WhyChooseUsController::class, 'index'])->name('why-choose-us.index');
+        Route::put('/why-choose-us/update', [WhyChooseUsController::class, 'update'])->name('why-choose-us.update');
+
+        Route::resource('why-choose-features', WhyChooseFeatureController::class);
      });
 
     // Team route here

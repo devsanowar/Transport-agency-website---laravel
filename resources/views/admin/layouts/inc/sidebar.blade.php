@@ -55,6 +55,9 @@
             <ul class="mm-collapse">
                 <li> <a href="{{ route('about_page.about.index') }}"><i class="bx bx-radio-circle"></i>About</a>
                 </li>
+
+                <li> <a href="{{ route('why-choose-us.index') }}"><i class="bx bx-radio-circle"></i>Why Choose Us</a>
+                </li>
             </ul>
         </li>
 
