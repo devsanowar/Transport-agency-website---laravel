@@ -57,6 +57,27 @@
                             </div>
                         </div>
 
+                        {{-- Happy client --}}
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Happy Client</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="why_choose_us_happy_client" class="form-control"
+                                    value="{{ old('why_choose_us_happy_client', $why->why_choose_us_happy_client) }}"
+                                    placeholder="Enter Happy Client text">
+                            </div>
+                        </div>
+
+
+                         {{-- Number of Happy client --}}
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">Number Of Happy Client</label>
+                            <div class="col-sm-9">
+                                <input type="number" name="why_choose_us_happy_client_count" class="form-control"
+                                    value="{{ old('why_choose_us_happy_client_count', $why->why_choose_us_happy_client_count) }}"
+                                    placeholder="Enter number of happy client" min="0">
+                            </div>
+                        </div>
+
                         {{-- Button Link --}}
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Button Link</label>

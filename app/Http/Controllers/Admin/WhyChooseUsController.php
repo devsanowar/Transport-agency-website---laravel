@@ -21,6 +21,8 @@ class WhyChooseUsController extends Controller
             'why_choose_us_title' => 'required|string|max:255',
             'why_choose_us_subtitle' => 'nullable|string|max:255',
             'why_choose_us_description' => 'nullable|string',
+            'why_choose_us_happy_client' => 'nullable|string',
+            'why_choose_us_happy_client_count' => 'nullable|string',
             'why_choose_us_button_text' => 'nullable|string|max:255',
             'why_choose_us_button_link' => 'nullable|string|max:255',
             'why_choose_us_bg_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -54,6 +56,8 @@ class WhyChooseUsController extends Controller
             'why_choose_us_title',
             'why_choose_us_subtitle',
             'why_choose_us_description',
+            'why_choose_us_happy_client',
+            'why_choose_us_happy_client_count',
             'why_choose_us_button_text',
             'why_choose_us_button_link',
         ];

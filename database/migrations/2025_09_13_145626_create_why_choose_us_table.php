@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('why_choose_us_subtitle')->nullable();
             $table->longText('why_choose_us_description')->nullable();
             $table->string('why_choose_us_button_text')->nullable();
+            $table->string('why_choose_us_happy_client')->nullable();
+            $table->string('why_choose_us_happy_client_count')->nullable();
             $table->string('why_choose_us_button_link')->nullable();
             $table->string('why_choose_us_bg_image')->nullable();
             $table->string('why_choose_us_shape_image')->nullable();
