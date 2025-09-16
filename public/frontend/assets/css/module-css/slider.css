@@ -61,7 +61,7 @@
 	margin-bottom: 115px;
 	z-index: 15;
 	background: #D5D5D56B;
-	width: 68%;
+	width: 55%;
 	padding: 40px;
 	border-radius: 10px;
 }
@@ -103,10 +103,10 @@
 
 .main-slider__title {
   position: relative;
-  font-size: 65px;
+  font-size: 55px;
   color: var(--tanspot-white);
   font-weight: 700;
-  line-height: 1.2em;
+  line-height: 1.3em;
   text-transform: uppercase;
   margin-top: 22px;
   opacity: 0;
@@ -122,6 +122,7 @@
   -o-transition: all 1500ms ease;
   transition: all 1500ms ease;
 }
+
 
 .main-slider__title span {
   color: var(--tanspot-base);
