@@ -106,6 +106,7 @@
                 success: function(response){
                     if(response.status === 'success'){
                         toastr.success(response.message);
+                        window.location.href = "{{ route('brands.index') }}";
                     } else {
                         toastr.error(response.message ?? 'Something went wrong!');
                     }

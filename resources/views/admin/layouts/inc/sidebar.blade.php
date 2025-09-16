@@ -1,10 +1,16 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
+            @if($website_setting)
+            <img src="{{ asset($website_setting->website_favicon) }}" class="logo-icon" alt="logo icon">
+            @else
             <img src="{{ asset('backend') }}/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            @endif
         </div>
         <div>
-            <h4 class="logo-text">Rukada</h4>
+
+            <h4 class="logo-text">{{ $website_setting->website_title ?? 'Rukada' }}</h4>
+
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
@@ -74,6 +80,15 @@
                 </li>
 
             </ul>
+        </li>
+
+        <li>
+            <a href="{{ route('faq.index') }}">
+                <div class="parent-icon">
+                    <i class='bx  bx-reply'  ></i>
+                </div>
+                <div class="menu-title">FAQ Page</div>
+            </a>
         </li>
 
         <li>

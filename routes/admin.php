@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\ThemeCustomerController;
 use App\Http\Controllers\Admin\AboutPageAboutController;
 use App\Http\Controllers\Admin\CustomerReviewController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\Admin\WhyChooseFeatureController;
 
@@ -136,6 +137,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     //Brand route here
     Route::resource('brands', BrandController::class);
+
+    //FAQ route here
+    Route::resource('faq', FaqController::class);
 
 
 });

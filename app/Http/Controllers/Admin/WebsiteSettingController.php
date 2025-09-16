@@ -35,6 +35,7 @@ class WebsiteSettingController extends Controller
             'website_phone_number_two',
             'website_email_one',
             'website_email_two',
+            'working_hour',
             'website_address',
             'website_footer_content',
             'website_copyright_text',
