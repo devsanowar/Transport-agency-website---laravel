@@ -45,7 +45,8 @@
                             <label class="col-sm-3 col-form-label">Short Description</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" rows="3" name="service_short_description"
-                                    placeholder="Enter Short Description">{{ old('service_short_description', $service->service_shrt_description) }}</textarea>
+                                    placeholder="Enter Short Description">
+                                    {!! $service->service_short_description !!}</textarea>
                             </div>
                         </div>
 

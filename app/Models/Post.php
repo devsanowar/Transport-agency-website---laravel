@@ -24,4 +24,5 @@ class Post extends Model
     {
         return $this->morphOne(SeoMeta::class, 'seoable');
     }
+
 }

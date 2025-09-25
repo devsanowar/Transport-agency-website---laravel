@@ -33,7 +33,7 @@ class AchievementController extends Controller
     {
         $request->validate([
             'achievement_title'   => 'required|string|max:255',
-            'achievement_count'   => 'required|numeric',
+            'achievement_count'   => 'required|numaric|min:0',
             'achievement_icon'    => 'nullable|image|mimes:png,jpg,jpeg,svg|max:200',
             'status'             => 'required|boolean',
             'meta_title'         => 'nullable|string|max:255',

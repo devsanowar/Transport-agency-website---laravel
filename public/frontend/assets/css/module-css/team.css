@@ -1,5 +1,5 @@
 /*==============================================
-    Team One 
+    Team One
 ===============================================*/
 .team-one {
     position: relative;
@@ -463,7 +463,7 @@
     align-items: center;
     font-size: 18px !important;
     color: var(--tanspot-white) !important;
-    background-color: rgba(var(--tanspot-base-rgb), 1) !important;
+    background-color: var(--tanspot-base) !important;
     border-radius: 50%;
     margin: 0;
     text-align: center;

@@ -497,79 +497,98 @@
 @endsection
 @push('scripts')
 
-
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // HEX ↔ Color Picker Sync
+    function bindHexColorSync(hexInputId, colorPickerId) {
+        const hexInput = document.getElementById(hexInputId);
+        const colorPicker = document.getElementById(colorPickerId);
+
+        if (!hexInput || !colorPicker) return;
+
+        // Color Picker → Hex Input
+        colorPicker.addEventListener("input", function () {
+            hexInput.value = this.value;
+        });
+
+        // Hex Input → Color Picker
+        hexInput.addEventListener("input", function () {
+            const val = this.value;
+            if (/^#([0-9A-F]{3}){1,2}$/i.test(val)) { // valid hex
+                colorPicker.value = val;
+            }
+        });
+    }
+
+    // RGB ↔ Color Picker Sync
+    function bindRgbColorSync(rgbInputId, colorPickerId, buttonId) {
+        const rgbInput = document.getElementById(rgbInputId);
+        const colorPicker = document.getElementById(colorPickerId);
+        const btn = document.getElementById(buttonId);
+
+        if (!rgbInput || !colorPicker) return;
+
+        // Button click → open color picker
+        btn.addEventListener("click", () => colorPicker.click());
+
+        // Color Picker → RGB Input
+        colorPicker.addEventListener("input", function () {
+            const hex = this.value;
+            const rgb = hexToRgb(hex);
+            rgbInput.value = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+        });
+
+        // RGB Input → Color Picker
+        rgbInput.addEventListener("input", function () {
+            const rgb = this.value.split(",").map(n => parseInt(n.trim()));
+            if (rgb.length === 3 && rgb.every(n => !isNaN(n) && n >= 0 && n <= 255)) {
+                const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+                colorPicker.value = hex;
+            }
+        });
+    }
+
+    // Helper: HEX → RGB
     function hexToRgb(hex) {
-    hex = hex.replace('#','');
-    let bigint = parseInt(hex,16);
-    let r = (bigint >>16) & 255;
-    let g = (bigint >>8) & 255;
-    let b = bigint & 255;
-    return r + ',' + g + ',' + b;
-}
-
-// RGB button trigger
-function setupRgbPicker(rgbInputId, btnId, pickerId){
-    const rgbInput = document.getElementById(rgbInputId);
-    const btn = document.getElementById(btnId);
-    const picker = document.getElementById(pickerId);
-
-    btn.addEventListener('click', () => picker.click());
-    picker.addEventListener('input', () => {
-        rgbInput.value = hexToRgb(picker.value);
-    });
-}
-
-// Setup all RGB pickers
-setupRgbPicker('grayRgb', 'grayRgbBtn', 'grayRgbPicker');
-setupRgbPicker('baseRgb', 'baseRgbBtn', 'baseRgbPicker');
-setupRgbPicker('primaryRgb', 'primaryRgbBtn', 'primaryRgbPicker');
-setupRgbPicker('blackRgb', 'blackRgbBtn', 'blackRgbPicker');
-setupRgbPicker('whiteRgb', 'whiteRgbBtn', 'whiteRgbPicker');
-setupRgbPicker('borderRgb', 'borderRgbBtn', 'borderRgbPicker');
-</script>
-
-<script>
-    // Convert HEX → RGB
-    function hexToRgb(hex) {
-        let r = 0, g = 0, b = 0;
-        hex = hex.replace("#", "");
+        hex = hex.replace(/^#/, "");
         if (hex.length === 3) {
-            r = parseInt(hex[0]+hex[0], 16);
-            g = parseInt(hex[1]+hex[1], 16);
-            b = parseInt(hex[2]+hex[2], 16);
-        } else if (hex.length === 6) {
-            r = parseInt(hex.substring(0,2), 16);
-            g = parseInt(hex.substring(2,4), 16);
-            b = parseInt(hex.substring(4,6), 16);
+            hex = hex.split("").map(x => x + x).join("");
         }
-        return `${r}, ${g}, ${b}`;
+        const num = parseInt(hex, 16);
+        return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
     }
 
-    // Bind picker + hex + rgb sync
-    function bindColor(pickerId, hexId, rgbId) {
-        const picker = document.getElementById(pickerId);
-        const hex = document.getElementById(hexId);
-        const rgb = document.getElementById(rgbId);
-
-        picker.addEventListener("input", () => {
-            hex.value = picker.value;
-            rgb.value = hexToRgb(picker.value);
-        });
-
-        hex.addEventListener("input", () => {
-            picker.value = hex.value;
-            rgb.value = hexToRgb(hex.value);
-        });
+    // Helper: RGB → HEX
+    function rgbToHex(r, g, b) {
+        return "#" + [r, g, b].map(x => {
+            const hex = x.toString(16);
+            return hex.length === 1 ? "0" + hex : hex;
+        }).join("");
     }
 
-    bindColor("grayPicker", "grayHex", "grayRgb");
-    bindColor("basePicker", "baseHex", "baseRgb");
-    bindColor("primaryPicker", "primaryHex", "primaryRgb");
-    bindColor("blackPicker", "blackHex", "blackRgb");
-    bindColor("whitePicker", "whiteHex", "whiteRgb");
-    bindColor("borderPicker", "borderHex", "borderRgb");
+    // Bind all fields
+    bindHexColorSync("grayHex", "grayHexPicker");
+    bindRgbColorSync("grayRgb", "grayRgbPicker", "grayRgbBtn");
+
+    bindHexColorSync("baseHex", "baseHexPicker");
+    bindRgbColorSync("baseRgb", "baseRgbPicker", "baseRgbBtn");
+
+    bindHexColorSync("primaryHex", "primaryHexPicker");
+    bindRgbColorSync("primaryRgb", "primaryRgbPicker", "primaryRgbBtn");
+
+    bindHexColorSync("blackHex", "blackHexPicker");
+    bindRgbColorSync("blackRgb", "blackRgbPicker", "blackRgbBtn");
+
+    bindHexColorSync("whiteHex", "whiteHexPicker");
+    bindRgbColorSync("whiteRgb", "whiteRgbPicker", "whiteRgbBtn");
+
+    bindHexColorSync("borderHex", "borderHexPicker");
+    bindRgbColorSync("borderRgb", "borderRgbPicker", "borderRgbBtn");
+});
 </script>
+
+
+
 
 <script>
     $(document).ready(function() {

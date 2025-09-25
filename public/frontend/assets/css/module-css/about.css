@@ -621,7 +621,7 @@
 }
 
 .about-two__img-two img {
-    width: auto;
+    width: 400px;
     border-radius: var(--tanspot-bdr-radius);
     border: 10px solid var(--tanspot-base);
 }
@@ -647,7 +647,7 @@
     top: -15px;
     right: 0px;
     width: 25px;
-    border-bottom: 15px solid #e14110;
+    border-bottom: 15px solid var(--tanspot-base);
     border-left: 0px solid transparent;
     border-right: 70px solid transparent;
     transition: all 200ms linear;
@@ -737,11 +737,19 @@
     margin-bottom: 37px;
 }
 
-.about-two__progress-single {
+/* .about-two__progress-single {
     position: relative;
     display: flex;
     align-items: center;
+} */
+
+.about-two__progress-single {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 45%;
 }
+
 
 .about-two__progress-box {
     position: relative;

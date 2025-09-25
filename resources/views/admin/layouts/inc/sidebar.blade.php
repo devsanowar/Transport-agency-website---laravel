@@ -2,16 +2,16 @@
     <div class="sidebar-header">
         <div>
             @if($website_setting)
-            <img src="{{ asset($website_setting->website_favicon) }}" class="logo-icon" alt="logo icon">
+            <img src="{{ asset($website_setting->website_header_logo) }}" class="logo-icon" alt="logo icon">
             @else
             <img src="{{ asset('backend') }}/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
             @endif
         </div>
-        <div>
+        {{-- <div>
 
             <h4 class="logo-text">{{ $website_setting->website_title ?? 'Rukada' }}</h4>
 
-        </div>
+        </div> --}}
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
     </div>

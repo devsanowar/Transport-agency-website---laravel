@@ -18,6 +18,8 @@
 
     @include('website.layouts.inc.style')
 
+    @stack('styles')
+
 </head>
 
 <body class="custom-cursor">
@@ -65,6 +67,7 @@
     </a>
 
     @include('website.layouts.inc.script')
+    @stack('scripts')
 </body>
 
 </html>

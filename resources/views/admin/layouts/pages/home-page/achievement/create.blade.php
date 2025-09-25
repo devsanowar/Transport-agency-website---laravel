@@ -29,7 +29,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Achievement Count</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" name="achievement_count"
+                                <input type="text" class="form-control" name="achievement_count"
                                     placeholder="ex: 80">
                             </div>
                         </div>

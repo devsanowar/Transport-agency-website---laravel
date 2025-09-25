@@ -12,4 +12,8 @@ class Service extends Model
     {
         return $this->morphOne(SeoMeta::class, 'seoable');
     }
+
+    protected $casts = [
+        'service_features' => 'array',
+    ];
 }

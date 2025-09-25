@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\ThemeCustomizer;
+use App\Models\WebsiteColor;
 use App\Models\WebsiteSetting;
+use App\Models\ThemeCustomizer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,5 +28,8 @@ class ThemeServiceProvider extends ServiceProvider
 
         $website_setting = WebsiteSetting::first();
         View::share('website_setting', $website_setting);
+
+        $website_color = WebsiteColor::first();
+        View::share('website_color', $website_color);
     }
 }

@@ -76,12 +76,10 @@
 @push('scripts')
 
 <script>
-    // যখন color picker এ select করা হবে
     document.getElementById("grayHexPicker").addEventListener("input", function () {
         document.getElementById("grayHex").value = this.value;
     });
 
-    // যখন text input এ লিখা হবে
     document.getElementById("grayHex").addEventListener("input", function () {
         let val = this.value;
         if(/^#([0-9A-F]{3}){1,2}$/i.test(val)){ // valid hex হলে

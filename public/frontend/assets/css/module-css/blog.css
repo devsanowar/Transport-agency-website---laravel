@@ -570,7 +570,7 @@ Blog Two
 }
 
 .blog-two__author-img img {
-    width: auto;
+    width: 100%;
     border-radius: 50%;
 }
 
