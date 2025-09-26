@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Achievement;
 use App\Models\Cta;
-use App\Models\CustomerReview;
-use App\Models\Feature;
-use App\Models\HomeAbout;
 use App\Models\Post;
-use App\Models\ReviewSectionTitle;
-use App\Models\Service;
-use App\Models\Slider;
 use App\Models\Team;
+use App\Models\Brand;
+use App\Models\Slider;
+use App\Models\Feature;
+use App\Models\Service;
+use App\Models\HomeAbout;
+use App\Models\Achievement;
 use Illuminate\Http\Request;
+use App\Models\CustomerReview;
+use App\Models\ReviewSectionTitle;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,8 @@ class HomeController extends Controller
         $teams = Team::all();
         $posts = Post::with(['category','author'])->latest()->get();
 
-        return view('website.home', compact('sliders', 'features', 'about', 'services', 'achievements', 'cta', 'reviews','reviewTitle', 'teams', 'posts'));
+        $brands = Brand::where('status', 1)->orderBy('id','desc')->get();
+
+        return view('website.home', compact('sliders', 'features', 'about', 'services', 'achievements', 'cta', 'reviews','reviewTitle', 'teams', 'posts', 'brands'));
     }
 }

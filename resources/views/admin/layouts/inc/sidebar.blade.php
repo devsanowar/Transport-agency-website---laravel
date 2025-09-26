@@ -1,5 +1,6 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
+        <a href="{{ route('home') }}" target="_blank">
         <div>
             @if($website_setting)
             <img src="{{ asset($website_setting->website_header_logo) }}" class="logo-icon" alt="logo icon">
@@ -7,6 +8,7 @@
             <img src="{{ asset('backend') }}/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
             @endif
         </div>
+        </a>
         {{-- <div>
 
             <h4 class="logo-text">{{ $website_setting->website_title ?? 'Rukada' }}</h4>
