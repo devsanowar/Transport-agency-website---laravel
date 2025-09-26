@@ -16,7 +16,7 @@
                     </div>
                     <div class="content">
                         <span>Call Us Free</span>
-                        <p><a href="tel:+9993256589">+999 325 6589</a></p>
+                        <p><a href="tel:{{ $cta->cta_phone ?? '+9993256589' }}">{{ $cta->cta_phone ?? '+9993256589' }}</a></p>
                     </div>
                 </div>
                 <div class="find-transport__btn-box">

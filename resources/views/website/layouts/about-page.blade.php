@@ -1,19 +1,47 @@
 @extends('website.layouts.app')
-@section('title', 'Home Page')
+@section('title', 'About Page')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/module-css/page-header.css" />
+@endpush
 @section('website_content')
-<!--Main Slider Start-->
-@include('website.layouts.pages.home-page.slider')
-<!--Main Slider End-->
 
-<!--Feature One End-->
-@include('website.layouts.pages.home-page.feature')
+<div class="page-wrapper">
 
-<!--About Two Start-->
-@include('website.layouts.pages.home-page.about')
+      <!--Page Header Start-->
+      <section class="page-header">
+        <div
+          class="page-header__bg"
+          style="
+            background-image: url({{ asset('frontend') }}/assets/images/backgrounds/page-header-bg.jpg);
+          "
+        ></div>
+        <div class="container">
+          <div class="page-header__inner">
+            <div class="page-header__img-1">
+              <img src="assets/images/resources/page-header-img-1.png" alt="" />
+            </div>
+            <div class="page-header__shape-1 float-bob-y">
+              <img src="assets/images/shapes/page-header-shape-1.png" alt="" />
+            </div>
+            <h3>About Us</h3>
+            <div class="thm-breadcrumb__inner">
+              <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="index.html">Home</a></li>
+                <li><span class="fas fa-angle-right"></span></li>
+                <li>About Us</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--Page Header End-->
 
-<!--About Two End-->
+      <!--About One Start-->
+      @include('website.layouts.pages.about-page.about')
+      <!--About One End-->
 
-<section class="sliding-text-one" style="padding-bottom: 0">
+    <!--Sliding Text One Start-->
+    <section class="sliding-text-one">
         <div class="sliding-text-one__wrap">
             <ul class="sliding-text__list list-unstyled marquee_mode">
                 <li>
@@ -49,33 +77,21 @@
             </ul>
         </div>
     </section>
+    <!--Sliding Text One End-->
 
-<!--Services Two Start-->
-@include('website.layouts.pages.home-page.service')
-<!--Services Two End-->
+    <!--Why Choose Two Start-->
+    @include('website.layouts.pages.about-page.why_choose_us')
+    <!--Why Choose Two End-->
 
-<!--Counter Two Start -->
-@include('website.layouts.pages.home-page.achievement')
-<!--Counter Two End -->
+    <!-- Team Two Start -->
+    @include('website.layouts.pages.about-page.team')
+    <!-- Team Two End -->
 
-<!--Find Transport Start -->
-@include('website.layouts.pages.home-page.cta')
-<!--Find Transport End -->
-<!--Testimonials Two Start -->
-@include('website.layouts.pages.home-page.review')
+    <!--Find Transport Start -->
+    @include('website.layouts.pages.about-page.cta')
+    <!--Find Transport End -->
 
-<!--Testimonials Two End -->
-
-<!-- Team Two Start -->
-@include('website.layouts.pages.home-page.team')
-<!-- Team Two End -->
-
-<!-- Blog Two Start -->
-@include('website.layouts.pages.home-page.blog')
-<!-- Blog Two End -->
-
-<!--Start Brand One-->
-@include('website.layouts.pages.home-page.brand')
-<!--End Brand One-->
+    @include('website.layouts.pages.about-page.brand')
+</div>
 
 @endsection

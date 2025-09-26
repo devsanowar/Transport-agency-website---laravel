@@ -530,8 +530,8 @@ Why Choose Two
 	overflow: hidden;
 	/* background-color: var(--tanspot-base); */
 	z-index: 1;
-	background-image: url('/assets/images/slider/slider-04.jpg');
-	background-size: contain;
+	/* background-image: url('/assets/images/slider/slider-04.jpg'); */
+	background-size: cover;
 }
 
 .why-choose-two__bg-box {

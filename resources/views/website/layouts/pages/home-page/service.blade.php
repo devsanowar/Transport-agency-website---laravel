@@ -41,9 +41,6 @@
                             {!! $service->service_short_description !!}
                         </p>
 
-
-
-
                         <ul class="services-two__point">
                             @foreach($service->service_features as $feature)
                             <li>
