@@ -79,11 +79,28 @@ class PostCategoryController extends Controller
 
     public function destroy($id)
     {
+        $defaultCategoryName = 'Uncategorized'; // ডিফল্ট ক্যাটেগরির নাম
+        $defaultCategory = PostCategory::where('post_category_name', $defaultCategoryName)->first();
+
+        if (!$defaultCategory) {
+            return back()->with('error', "Default category '{$defaultCategoryName}' not found. Please create it first.");
+        }
+
         $category = PostCategory::findOrFail($id);
+
+        // Prevent deleting default category itself
+        if ($category->id == $defaultCategory->id) {
+            return back()->with('error', "'{$defaultCategoryName}' category cannot be deleted.");
+        }
+
+        // Move related posts into default category
+        $category->posts()->update([
+            'category_id' => $defaultCategory->id
+        ]);
+
+        // Delete the category
         $category->delete();
 
-        return redirect()->back()->with('success', 'Post Category deleted successfully!');
+        return back()->with('success', "Category deleted successfully. Posts moved to '{$defaultCategoryName}'.");
     }
-
-
 }

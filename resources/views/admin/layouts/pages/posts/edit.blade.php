@@ -158,20 +158,19 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <script>
-    // Initialize Quill
     var quill = new Quill('#editor', {
         theme: 'snow'
     });
 
-    // Populate Quill with existing content (in case {!! $post->description !!} fails)
-    quill.root.innerHTML = `{!! addslashes($post->description) !!}`;
+    // Safely set existing content
+    quill.root.innerHTML = @json($post->description);
 
-    // Form submit event
+    // Form submit
     document.getElementById('postForm').addEventListener('submit', function(e) {
-        // Copy content to hidden input before submit
         document.getElementById('hiddenDescription').value = quill.root.innerHTML;
     });
 </script>
+
 
 
 @endpush

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Breadcrumb;
 use App\Models\WebsiteColor;
 use App\Models\WebsiteSetting;
 use App\Models\ThemeCustomizer;
@@ -31,5 +32,8 @@ class ThemeServiceProvider extends ServiceProvider
 
         $website_color = WebsiteColor::first();
         View::share('website_color', $website_color);
+
+        $website_breadcrumb = Breadcrumb::first();
+        View::share('website_breadcrumb', $website_breadcrumb);
     }
 }

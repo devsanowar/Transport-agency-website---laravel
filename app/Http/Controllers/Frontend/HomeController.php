@@ -32,7 +32,7 @@ class HomeController extends Controller
         $reviewTitle = ReviewSectionTitle::first();
 
         $teams = Team::all();
-        $posts = Post::with(['category','author'])->latest()->get();
+        $posts = Post::with(['category','author'])->latest()->take(3)->get();
 
         $brands = Brand::where('status', 1)->orderBy('id','desc')->get();
 

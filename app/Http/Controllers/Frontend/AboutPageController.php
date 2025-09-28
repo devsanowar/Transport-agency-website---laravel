@@ -22,6 +22,6 @@ class AboutPageController extends Controller
         $reviews = CustomerReview::select(['id','client_image'])->take(5)->get();
 
         $about = AboutPageAbout::first();
-        return view('website.layouts.about-page', compact('brands', 'cta', 'teams', 'whyChooseUs', 'reviews', 'about'));
+        return view('website.about-page', compact('brands', 'cta', 'teams', 'whyChooseUs', 'reviews', 'about'));
     }
 }

@@ -409,6 +409,7 @@ Blog Two
     border-radius: var(--tanspot-bdr-radius);
     transform: scale3d(1, 1, 1);
     transition: transform 1s ease-in-out;
+    height: 260px;
 }
 
 .blog-two__single:hover .blog-two__img img {

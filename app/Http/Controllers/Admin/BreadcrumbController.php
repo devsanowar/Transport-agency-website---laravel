@@ -26,7 +26,7 @@ class BreadcrumbController extends Controller
             if (File::exists(public_path($breadcrumb->breadcrumb_bg_image))) {
                 File::delete(public_path($breadcrumb->breadcrumb_bg_image));
             }
-            $breadcrumb->breadcrumb_bg_image = null;
+            $breadcrumb->breadcrumb_bg_image = 'page-header-bg.jpg';
         } elseif ($request->hasFile('breadcrumb_bg_image')) {
             $file = $request->file('breadcrumb_bg_image');
             $filename = time() . '_bg.' . $file->getClientOriginalExtension();
@@ -39,7 +39,7 @@ class BreadcrumbController extends Controller
             if (File::exists(public_path($breadcrumb->page_header_image))) {
                 File::delete(public_path($breadcrumb->page_header_image));
             }
-            $breadcrumb->page_header_image = null;
+            $breadcrumb->page_header_image = 'page-header-bg.jpg';
         } elseif ($request->hasFile('page_header_image')) {
             $file = $request->file('page_header_image');
             $filename = time() . '_header.' . $file->getClientOriginalExtension();
@@ -52,7 +52,7 @@ class BreadcrumbController extends Controller
             if (File::exists(public_path($breadcrumb->container_box_image))) {
                 File::delete(public_path($breadcrumb->container_box_image));
             }
-            $breadcrumb->container_box_image = null;
+            $breadcrumb->container_box_image = 'page-header-bg.jpg';
         } elseif ($request->hasFile('container_box_image')) {
             $file = $request->file('container_box_image');
             $filename = time() . '_container.' . $file->getClientOriginalExtension();

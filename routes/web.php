@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\Frontend\AboutPageController;
-use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Frontend\FaqController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ServicesController;
+use App\Http\Controllers\Frontend\AboutPageController;
 use App\Http\Controllers\Social\SocialLoginController;
 
 // Route::get('/', function () {
@@ -13,6 +16,9 @@ use App\Http\Controllers\Social\SocialLoginController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-page', [AboutPageController::class, 'index'])->name('about.page');
+Route::get('/services', [ServicesController::class, 'index'])->name('services.page');
+Route::get('/blog-page', [BlogController::class, 'index'])->name('blog.page');
+Route::get('faq-page', [FaqController::class, 'index'])->name('faq.page');
 
 
 // Route::get('/dashboard', function () {

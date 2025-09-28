@@ -73,14 +73,14 @@
                         </li>
 
                         <li>
-                            <a href="services.html">Services</a>
+                            <a href="{{ route('services.page') }}">Services</a>
                         </li>
 
                         <li>
-                            <a href="blog-right-sidebar.html">Blog</a>
+                            <a href="{{ route('blog.page') }}">Blog</a>
                         </li>
 
-                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="{{ route('faq.page') }}">FAQs</a></li>
 
                         <li>
                             <a href="contact.html">Contact</a>

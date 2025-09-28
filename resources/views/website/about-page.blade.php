@@ -8,32 +8,7 @@
 <div class="page-wrapper">
 
       <!--Page Header Start-->
-      <section class="page-header">
-        <div
-          class="page-header__bg"
-          style="
-            background-image: url({{ asset('frontend') }}/assets/images/backgrounds/page-header-bg.jpg);
-          "
-        ></div>
-        <div class="container">
-          <div class="page-header__inner">
-            <div class="page-header__img-1">
-              <img src="assets/images/resources/page-header-img-1.png" alt="" />
-            </div>
-            <div class="page-header__shape-1 float-bob-y">
-              <img src="assets/images/shapes/page-header-shape-1.png" alt="" />
-            </div>
-            <h3>About Us</h3>
-            <div class="thm-breadcrumb__inner">
-              <ul class="thm-breadcrumb list-unstyled">
-                <li><a href="index.html">Home</a></li>
-                <li><span class="fas fa-angle-right"></span></li>
-                <li>About Us</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      @include('website.layouts.inc.breadcrumb', ['page_name' => 'About', 'page_title' => 'About Us'])
       <!--Page Header End-->
 
       <!--About One Start-->
