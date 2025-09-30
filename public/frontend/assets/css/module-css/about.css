@@ -29,6 +29,7 @@
     -webkit-mask-size: cover;
     mask-size: cover;
     z-index: 1;
+    border: 5px solid var(--tanspot-base);
 }
 
 .about-one__img img {

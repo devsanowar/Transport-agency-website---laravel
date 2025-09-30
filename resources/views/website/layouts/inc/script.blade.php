@@ -29,3 +29,22 @@
 
 <!-- template js -->
 <script src="{{ asset('frontend') }}/assets/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    const menuLinks = document.querySelectorAll('.main-menu__list a');
+
+    // Shob li theke current class remove
+    const allMenuItems = document.querySelectorAll('.main-menu__list li');
+    allMenuItems.forEach(li => li.classList.remove('current'));
+
+    menuLinks.forEach(link => {
+        if (link.getAttribute('href') === window.location.origin + currentPath) {
+            link.parentElement.classList.add('current');
+        }
+    });
+});
+</script>
+

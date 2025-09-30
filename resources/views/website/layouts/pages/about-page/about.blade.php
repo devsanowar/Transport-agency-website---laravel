@@ -5,10 +5,14 @@
                 <div class="about-one__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                     <div class="about-one__img-box">
                         <div class="about-one__img">
-                            <img src="{{ asset('frontend') }}/assets/images/resources/about-one-img-1.jpg" alt="" />
+                            @if($about->about_image)
+                                <img src="{{ asset($about->about_image) }}" alt="" />
+                            @else
+                                <img src="{{ asset('frontend') }}/assets/images/resources/about-one-img-1.jpg" alt="" />
+                            @endif
                         </div>
 
-                        <div class="about-one__circle-text">
+                        {{-- <div class="about-one__circle-text">
                             <div class="about-one__round-text-box">
                                 <div class="inner">
                                     <div class="about-one__curved-circle rotate-me">
@@ -19,7 +23,7 @@
                                     <a href="about.html"><i class="icon-truck"></i></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

@@ -42,6 +42,7 @@
 <!-- template styles -->
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css" />
 <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
 <style>
     :root {
@@ -63,4 +64,6 @@
         --tanspot-bdr-color-rgb: 230, 230, 230;
         --tanspot-bdr-radius: 10px;
     }
+
+
 </style>

@@ -151,6 +151,19 @@
                                     </div>
                                 </div>
 
+                                <h6 class="mb-3 mt-4 text-uppercase">Contact Information</h6>
+
+                                <div class="col-md-12 mb-3">
+                                    <label for="working_hour" class="form-label">Working Hour</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class='bx bx-time'></i></span>
+                                        <input type="text" name="working_hour" class="form-control"
+                                            id="working_hour"
+                                            value="{{ $websiteSetting->working_hour ?? ''}}"
+                                            placeholder="Working hour here">
+                                    </div>
+                                </div>
+
                                 <!-- Website URL -->
                                 <div class="col-md-12 mb-3">
                                     <label for="website_website_url" class="form-label">Website Url</label>
@@ -231,6 +244,8 @@
                                             placeholder="Footer content here ...">{{ $websiteSetting->website_footer_content ?? '' }}</textarea>
                                     </div>
                                 </div>
+
+
 
                                 <!-- Copyright Text -->
                                 <div class="col-md-12 mb-3">

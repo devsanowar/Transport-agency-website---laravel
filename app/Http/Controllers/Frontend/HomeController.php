@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Cta;
+use App\Models\Menu;
 use App\Models\Post;
 use App\Models\Team;
 use App\Models\Brand;
@@ -19,6 +20,8 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
     public function index(){
+
+
         $sliders = Slider::where('status', 1)->orderByDesc('id')->get();
         $features = Feature::where('status', 1)->orderBy('order_by')->get();
         $about = HomeAbout::first();

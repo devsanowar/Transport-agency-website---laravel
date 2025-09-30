@@ -1,6 +1,16 @@
 @extends('website.layouts.app')
 @section('title', 'Home Page')
 @section('website_content')
+
+<!--Start Preloader-->
+<div class="loader js-preloader">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<!--End Preloader-->
+
+
 <!--Main Slider Start-->
 @include('website.layouts.pages.home-page.slider')
 <!--Main Slider End-->

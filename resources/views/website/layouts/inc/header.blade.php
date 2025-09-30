@@ -65,27 +65,25 @@
                 </div>
                 <div class="main-menu__main-menu-box">
                     <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+
                     <ul class="main-menu__list">
-                        <li><a href="{{ route('home') }}">Home</a></li>
+                        @foreach($menus as $menu)
+                        <li class="{{ $menu->children->count() ? 'dropdown' : '' }}">
+                            <a href="{{ url($menu->menu_url) }}">{{ $menu->menu_name }}</a>
 
-                        <li>
-                            <a href="{{ route('about.page') }}">About</a>
+                            @if($menu->children->count())
+                            <ul>
+                                @foreach($menu->children as $child)
+                                <li>
+                                    <a href="{{ url($child->menu_url) }}">{{ $child->menu_name }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                            @endif
                         </li>
-
-                        <li>
-                            <a href="{{ route('services.page') }}">Services</a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('blog.page') }}">Blog</a>
-                        </li>
-
-                        <li><a href="{{ route('faq.page') }}">FAQs</a></li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
-                        </li>
+                        @endforeach
                     </ul>
+
                 </div>
                 <div class="main-menu__right">
                     <div class="main-menu__call">
@@ -99,17 +97,17 @@
                             </h5>
                         </div>
                     </div>
-                    <div class="main-menu__search-cart-box">
+                    {{-- <div class="main-menu__search-cart-box">
                         <div class="main-menu__search-cart-box">
                             <div class="main-menu__search-box">
                                 <a href="#" class="main-menu__search searcher-toggler-box icon-search"></a>
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="main-menu__btn-box">
-                        <a href="contact.html" class="thm-btn">Track Order<span><i
+                        <a href="{{ route('contact.page') }}" class="thm-btn">Track Order<span><i
                                     class="icon-right-arrow"></i></span></a>
                     </div>
                 </div>

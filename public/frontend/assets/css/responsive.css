@@ -972,6 +972,21 @@
 
 /* Mobile Layout: 320px. */
 @media only screen and (max-width: 767px) {
+
+    .main-slider__content {
+        width: 100%;
+    }
+
+    .main-slider__content {
+        margin-top: 50px;
+        margin-bottom: 35px;
+    }
+
+    .main-menu__left {
+        width: 90%;
+    }
+
+
     .section-title__title {
         font-size: 30px;
     }
@@ -2771,8 +2786,8 @@
     }
 
     .main-slider__content {
-        padding-top: 92px;
-        padding-bottom: 100px;
+        padding-top: 65px;
+        padding-bottom: 60px;
     }
 
 
