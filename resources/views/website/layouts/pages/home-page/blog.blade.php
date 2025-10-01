@@ -6,14 +6,14 @@
                 <div class="section-title__shape-1">
                     <i class="fas fa-plane"></i>
                 </div>
-                <h6 class="section-title__tagline">Blog & News</h6>
+                <h6 class="section-title__tagline">ব্লগ এবং নিউজ</h6>
                 <span class="section-title__tagline-border"></span>
                 <div class="section-title__shape-2">
                     <i class="fas fa-plane"></i>
                 </div>
             </div>
-            <h3 class="section-title__title title-animation">
-                Latest <span>News</span> from Insight
+            <h3 class="section-title__title">
+               ইনসাইট-এর <span>সর্বশেষ</span>সংবাদ
             </h3>
         </div>
         <div class="row">
@@ -24,7 +24,7 @@
                     <div class="blog-two__img">
                         <img src="{{ asset($post->thumbnail) }}" alt="" />
                         <div class="blog-two__plus">
-                            <a href="blog-details.html"><i class="icon-plus"></i></a>
+                            <a href="{{ route('blog.details.page', $post->slug) }}"><i class="icon-plus"></i></a>
                         </div>
                         <div class="blog-two__tag">
                             <a href="#">{{ $post->category->post_category_name }}</a>
@@ -33,18 +33,18 @@
                     <div class="blog-two__content">
                         <ul class="blog-two__meta list-unstyled">
                             <li>
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog.details.page', $post->slug) }}">
                                     <span class="fas fa-calendar-alt"></span>{{ $post->created_at->format('M d, Y') }}
                                 </a>
                             </li>
                             <li>
-                                <a href="blog-details.html">
+                                <a href="{{ route('blog.details.page', $post->slug) }}">
                                     <span class="fas fa-eye"></span>View ( {{ $post->views }} )
                                 </a>
                             </li>
                         </ul>
                         <h3 class="blog-two__title">
-                            <a href="blog-details.html">{{ $post->title ?? 'No Title' }}</a>
+                            <a href="{{ route('blog.details.page', $post->slug) }}">{{ $post->title ?? 'No Title' }}</a>
                         </h3>
                         <div class="blog-two__author-and-btn">
                             <div class="blog-two__author-info">
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="blog-two__arrow-box">
-                                <a href="blog-details.html" class="blog-two__arrow"><span
+                                <a href="{{ route('blog.details.page', $post->slug) }}" class="blog-two__arrow"><span
                                         class="icon-right-arrow"></span></a>
                             </div>
                         </div>

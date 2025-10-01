@@ -674,14 +674,14 @@ Blog Two
 }
 
 .blog-details__user {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 110px;
-    height: 31px;
-    background-color: var(--tanspot-base);
-    border-radius: 16px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 31px;
+	background-color: var(--tanspot-base);
+	border-radius: 16px;
+	padding: 0 12px;
 }
 
 .blog-details__user p {

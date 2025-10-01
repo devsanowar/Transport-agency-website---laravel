@@ -15,7 +15,7 @@
             <ul class="sidebar__category-list list-unstyled">
                 @foreach ($postCategories as $category)
                 <li>
-                    <a href="#">{{ $category->post_category_name }} <span>({{ str_pad($category->posts_count,2,'0', STR_PAD_LEFT) }})</span></a>
+                    <a href="{{ route('blog.category', $category->post_category_slug ) }}">{{ $category->post_category_name }} <span>({{ str_pad($category->posts_count,2,'0', STR_PAD_LEFT) }})</span></a>
                 </li>
                 @endforeach
             </ul>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="sidebar__post-content-box">
                         <h3>
-                            <a href="#">{{ $recentPost->title }}</a>
+                            <a href="{{ route('blog.details.page', $recentPost->slug) }}">{{ $recentPost->title }}</a>
                         </h3>
                     </div>
                 </div>
@@ -48,20 +48,26 @@
         </div>
         <!--End Sidebar Single-->
 
-        <!--Start Sidebar Single-->
-        <div class="sidebar__single sidebar__tags wow fadeInUp" data-wow-delay=".1s">
-            <h3 class="sidebar__title">Tags Cloud</h3>
-            <ul class="sidebar__tags-list clearfix list-unstyled">
-                <li><a href="#">Carpet</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Agent</a></li>
-                <li><a href="#">Room</a></li>
-                <li><a href="#">Love</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Project</a></li>
-                <li><a href="#">Corporate</a></li>
-            </ul>
-        </div>
-        <!--End Sidebar Single-->
+
     </div>
 </div>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // সব category link নাও
+        const categoryLinks = document.querySelectorAll('.sidebar__category-list li a');
+
+        // বর্তমান page URL
+        const currentUrl = window.location.href;
+
+        categoryLinks.forEach(link => {
+            // যদি link href বর্তমান URL এর সাথে match করে
+            if(link.href === currentUrl) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+@endpush

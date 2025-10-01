@@ -65,5 +65,15 @@
         --tanspot-bdr-radius: 10px;
     }
 
+    .sidebar__category-list li a.active {
+    font-weight: bold;
+    background-color: var(--tanspot-base); /* active link color */
+    color: #fff;
+}
+
+.sidebar__category-list li a.active span {
+	color: var(--tanspot-white);
+}
+
 
 </style>

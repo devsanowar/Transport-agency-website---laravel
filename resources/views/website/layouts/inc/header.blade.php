@@ -7,7 +7,7 @@
                         <i class="icon-phone-call"></i>
                     </div>
                     <div class="text">
-                        <p><a href="tel:15502505260">+1 (550) 250 5260</a></p>
+                        <p><a href="tel:{{ $website_setting->website_phone_number_one ?? ''}}">{{ $website_setting->website_phone_number_one ?? ''}}</a></p>
                     </div>
                 </li>
                 <li>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="text">
                         <p>
-                            <a href="mailto:info@tanspot24.com">info@tanspot24.com</a>
+                            <a href="mailto:{{ $website_setting->website_email_one ?? '' }}">{{ $website_setting->website_email_one ?? '' }}</a>
                         </p>
                     </div>
                 </li>
@@ -25,7 +25,7 @@
                         <i class="icon-location1"></i>
                     </div>
                     <div class="text">
-                        <p>4124 Cimmaron Road, CA 92806</p>
+                        <p>{{ $website_setting->website_address ?? '' }}</p>
                     </div>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
                     <div class="main-menu__top-time-icon">
                         <span class="icon-clock"></span>
                     </div>
-                    <p class="main-menu__top-text">Mon - Fri: 09:00 - 05:00</p>
+                    <p class="main-menu__top-text">{{ $website_setting->website_working_hours ?? '' }}</p>
                 </div>
                 <div class="main-menu__social">
                     <a href="#"><i class="fab fa-twitter"></i></a>
@@ -85,7 +85,7 @@
                     </ul>
 
                 </div>
-                <div class="main-menu__right">
+                {{-- <div class="main-menu__right">
                     <div class="main-menu__call">
                         <div class="main-menu__call-icon">
                             <i class="icon-phone-call"></i>
@@ -97,20 +97,20 @@
                             </h5>
                         </div>
                     </div>
-                    {{-- <div class="main-menu__search-cart-box">
+                    <div class="main-menu__search-cart-box">
                         <div class="main-menu__search-cart-box">
                             <div class="main-menu__search-box">
                                 <a href="#" class="main-menu__search searcher-toggler-box icon-search"></a>
                             </div>
 
                         </div>
-                    </div> --}}
+                    </div>
 
                     <div class="main-menu__btn-box">
                         <a href="{{ route('contact.page') }}" class="thm-btn">Track Order<span><i
                                     class="icon-right-arrow"></i></span></a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </nav>

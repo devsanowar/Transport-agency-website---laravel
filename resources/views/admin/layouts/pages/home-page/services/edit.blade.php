@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
 @section('title', 'Edit Service')
 @push('styles')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
 <style>
     .saanno-features {
         margin-left: 25%;
@@ -45,8 +47,7 @@
                             <label class="col-sm-3 col-form-label">Short Description</label>
                             <div class="col-sm-9">
                                 <textarea class="form-control" rows="3" name="service_short_description"
-                                    placeholder="Enter Short Description">
-                                    {!! $service->service_short_description !!}</textarea>
+                                    placeholder="Enter Short Description">{!! $service->service_short_description !!}</textarea>
                             </div>
                         </div>
 
@@ -54,17 +55,22 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Long Description</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" rows="3" name="service_long_description"
-                                    placeholder="Enter Long Description">{{ old('service_long_description', $service->service_long_description) }}</textarea>
+                                <div id="editor" style="height: 300px;">
+                                    {!! $service->service_long_description !!}
+                                </div>
+                                <input type="hidden" name="service_long_description" id="hiddenDescription">
                             </div>
+
+
                         </div>
 
                         {{-- Service Features --}}
                         <h6 class="mb-3 mt-4 text-uppercase">Service Features</h6>
                         <div id="featureWrapper">
                             @php
-                            $features = $service->service_features ? json_decode($service->service_features, true) : [];
+                            $features = $service->service_features ?? [];
                             @endphp
+
                             @forelse($features as $index => $feature)
                             <div class="row mb-3 featureRow">
                                 <div class="col-sm-3 {{ $loop->first ? '' : 'd-none' }}">
@@ -233,6 +239,24 @@
 @endsection
 
 @push('scripts')
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+
+    // Safely set existing content
+    quill.root.innerHTML = @json($service->service_long_description);
+
+    // Form submit
+    document.getElementById('editServiceForm').addEventListener('submit', function(e) {
+        document.getElementById('hiddenDescription').value = quill.root.innerHTML;
+    });
+</script>
+
+
 <script>
     $(document).ready(function(){
     $("#editServiceForm").submit(function(e){

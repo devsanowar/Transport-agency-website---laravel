@@ -27,7 +27,7 @@
                                 <span class="icon-delivery-man"></span>
                             </div>
                             <div class="services-two__title">
-                                <h3><a href="emergency-transport.html">{{ $service->service_title }}</a></h3>
+                                <h3><a href="{{ route('services.details.page', ['id' => $service->id]) }}">{{ $service->service_title }}</a></h3>
                             </div>
                             <p class="services-two__text">
                                 {!! $service->service_short_description !!}
@@ -47,7 +47,7 @@
                             </ul>
 
                             <div class="services-two__btn">
-                                <a href="emergency-transport.html">Read More <span class="icon-next"></span>
+                                <a href="{{ route('services.details.page', ['id' => $service->id]) }}">Read More <span class="icon-next"></span>
                                 </a>
                             </div>
                         </div>

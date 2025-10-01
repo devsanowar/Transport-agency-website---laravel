@@ -21,7 +21,11 @@ use App\Mail\ContactMail;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutPageController::class, 'index'])->name('about.page');
 Route::get('/services', [ServicesController::class, 'index'])->name('services.page');
+Route::get('/services/details/{id}', [ServicesController::class, 'details'])->name('services.details.page');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.page');
+Route::get('/blog/details/{slug}', [BlogController::class, 'details'])->name('blog.details.page');
+Route::get('/blog/category/{slug}', [BlogController::class, 'categoryPosts'])->name('blog.category');
+
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.page');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.page');
 Route::post('/contact-form', [ContactMailController::class, 'store'])->name('contact.mail.store');

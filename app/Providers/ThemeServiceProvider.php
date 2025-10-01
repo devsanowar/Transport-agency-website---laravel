@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Menu;
 use App\Models\Breadcrumb;
+use App\Models\SocialIcon;
 use App\Models\WebsiteColor;
 use App\Models\WebsiteSetting;
 use App\Models\ThemeCustomizer;
@@ -45,5 +46,8 @@ class ThemeServiceProvider extends ServiceProvider
             ->get();
 
         View::share('menus', $menus);
+
+        $socialIcon = SocialIcon::first();
+        View::share('socialIcon', $socialIcon);
     }
 }

@@ -17,7 +17,8 @@
                     </div>
                 </div>
                 <div class="card-body p-4">
-                    <form id="postForm" action="{{ route('admin.post.update',$post->id) }}" enctype="multipart/form-data" method="POST">
+                    <form id="postForm" action="{{ route('admin.post.update',$post->id) }}"
+                        enctype="multipart/form-data" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -67,14 +68,14 @@
 
                         {{-- Content --}}
                         <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Content</label>
-        <div class="col-sm-9">
-            <div id="editor" style="height: 300px;">
-                {!! $post->description !!}
-            </div>
-            <input type="hidden" name="description" id="hiddenDescription">
-        </div>
-    </div>
+                            <label class="col-sm-3 col-form-label">Content</label>
+                            <div class="col-sm-9">
+                                <div id="editor" style="height: 300px;">
+                                    {!! $post->description !!}
+                                </div>
+                                <input type="hidden" name="description" id="hiddenDescription">
+                            </div>
+                        </div>
 
 
                         {{-- Thumbnail --}}
@@ -109,7 +110,8 @@
                         <div class="row mb-3">
                             <label class="col-sm-3 col-form-label">Meta Title</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="meta_title" placeholder="SEO title" value="{{ $post->seo->meta_title }}">
+                                <input type="text" class="form-control" name="meta_title" placeholder="SEO title"
+                                    value="{{ $post->seo->meta_title }}">
                             </div>
                         </div>
 
